@@ -3,40 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FaceTrack Pro - AI Attendance System</title>
+    <title>🎯 FaceTrack Pro - Enhanced Attendance System</title>
     <style>
-      /* GitHub-inspired Design System */
-      :root {
-        --color-canvas-default: #0d1117;
-        --color-canvas-subtle: #161b22;
-        --color-border-default: #30363d;
-        --color-border-muted: #21262d;
-        --color-fg-default: #e6edf3;
-        --color-fg-muted: #7d8590;
-        --color-accent-emphasis: #1f6feb;
-        --color-success-emphasis: #238636;
-        --color-attention-emphasis: #9e6a03;
-        --color-danger-emphasis: #da3633;
-        --color-btn-primary-bg: #238636;
-        --color-btn-primary-hover: #2ea043;
-        --color-btn-bg: #21262d;
-        --color-btn-border: #30363d;
-        --color-btn-hover-bg: #30363d;
-        --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
-          Helvetica, Arial, sans-serif;
-      }
-
+      /* Enhanced GitHub-inspired styling */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      :root {
+        --color-primary: #238636;
+        --color-canvas-default: #0d1117;
+        --color-canvas-subtle: #161b22;
+        --color-border-default: #30363d;
+        --color-border-muted: #21262d;
+        --color-text: #e6edf3;
+        --color-text-muted: #7d8590;
+        --color-accent: #1f6feb;
+        --color-success: #238636;
+        --color-warning: #d29922;
+        --color-danger: #da3633;
+        --color-btn-bg: #21262d;
+        --color-btn-hover: #30363d;
+        --color-fg-muted: #7d8590;
+      }
+
       body {
-        font-family: var(--font-stack);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+          Helvetica, Arial, sans-serif;
         background-color: var(--color-canvas-default);
-        color: var(--color-fg-default);
+        color: var(--color-text);
         line-height: 1.5;
+        min-height: 100vh;
       }
 
       /* Header */
@@ -49,59 +48,143 @@
         z-index: 100;
       }
 
-      .header-content {
-        max-width: 1280px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 20px;
-        font-weight: 600;
-        color: var(--color-fg-default);
-        text-decoration: none;
-      }
-
-      .logo::before {
-        content: "👤";
+      .header h1 {
         font-size: 24px;
-      }
-
-      .nav-menu {
+        font-weight: 600;
+        color: var(--color-text);
         display: flex;
-        gap: 24px;
-        list-style: none;
+        align-items: center;
+        gap: 8px;
       }
 
-      .nav-link {
-        color: var(--color-fg-muted);
-        text-decoration: none;
+      .header p {
+        color: var(--color-text-muted);
+        font-size: 14px;
+        margin-top: 4px;
+      }
+
+      /* Navigation Tabs */
+      .nav-tabs {
+        background-color: var(--color-canvas-subtle);
+        border-bottom: 1px solid var(--color-border-default);
+        padding: 0 24px;
+        display: flex;
+        gap: 2px;
+      }
+
+      .nav-tab {
+        background: none;
+        border: none;
+        color: var(--color-text-muted);
+        padding: 12px 16px;
+        cursor: pointer;
+        font-size: 14px;
         font-weight: 500;
-        transition: color 0.2s;
+        border-radius: 6px 6px 0 0;
+        transition: all 0.2s;
       }
 
-      .nav-link:hover {
-        color: var(--color-fg-default);
+      .nav-tab:hover {
+        color: var(--color-text);
+        background-color: var(--color-btn-hover);
       }
 
-      /* Main Container */
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
+      .nav-tab.active {
+        color: var(--color-text);
+        background-color: var(--color-canvas-default);
+        border-bottom: 2px solid var(--color-accent);
+      }
+
+      /* Tab Content */
+      .tab-content {
+        display: none;
         padding: 24px;
       }
 
-      /* Dashboard Grid */
-      .dashboard {
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Main Layout for Registration */
+      .main-container {
         display: grid;
-        grid-template-columns: 280px 1fr 320px;
+        grid-template-columns: 1fr 320px;
         gap: 24px;
-        margin-top: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Video Section */
+      .video-section {
+        background-color: var(--color-canvas-subtle);
+        border: 1px solid var(--color-border-default);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .video-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-danger);
+      }
+
+      .status-dot.active {
+        background-color: var(--color-success);
+      }
+
+      .video-container {
+        flex: 1;
+        background-color: var(--color-canvas-default);
+        border: 2px solid var(--color-border-default);
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        overflow: hidden;
+      }
+
+      #videoFeed {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 6px;
+      }
+
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
       }
 
       /* Sidebar */
@@ -109,308 +192,221 @@
         background-color: var(--color-canvas-subtle);
         border: 1px solid var(--color-border-default);
         border-radius: 12px;
-        padding: 24px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         height: fit-content;
-        position: sticky;
-        top: 100px;
-      }
-
-      .sidebar-section {
-        margin-bottom: 32px;
-      }
-
-      .sidebar-section:last-child {
-        margin-bottom: 0;
-      }
-
-      .sidebar-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--color-fg-default);
-        margin-bottom: 16px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid var(--color-border-muted);
-      }
-
-      /* Buttons */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border: 1px solid var(--color-btn-border);
-        border-radius: 6px;
-        background-color: var(--color-btn-bg);
-        color: var(--color-fg-default);
-        font-size: 14px;
-        font-weight: 500;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.2s;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 8px;
-      }
-
-      .btn:hover {
-        background-color: var(--color-btn-hover-bg);
-        border-color: var(--color-border-default);
-      }
-
-      .btn-primary {
-        background-color: var(--color-btn-primary-bg);
-        border-color: var(--color-btn-primary-bg);
-        color: white;
-      }
-
-      .btn-primary:hover {
-        background-color: var(--color-btn-primary-hover);
-        border-color: var(--color-btn-primary-hover);
-      }
-
-      .btn-success {
-        background-color: var(--color-success-emphasis);
-        border-color: var(--color-success-emphasis);
-        color: white;
-      }
-
-      .btn-danger {
-        background-color: var(--color-danger-emphasis);
-        border-color: var(--color-danger-emphasis);
-        color: white;
-      }
-
-      /* Main Content */
-      .main-content {
-        background-color: var(--color-canvas-subtle);
-        border: 1px solid var(--color-border-default);
-        border-radius: 12px;
-        overflow: hidden;
-      }
-
-      .content-header {
-        padding: 24px;
-        border-bottom: 1px solid var(--color-border-default);
-        background-color: var(--color-canvas-default);
-      }
-
-      .content-title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      .content-subtitle {
-        color: var(--color-fg-muted);
-        font-size: 16px;
-      }
-
-      .content-body {
-        padding: 24px;
-      }
-
-      /* Video Container */
-      .video-container {
-        position: relative;
-        background-color: var(--color-canvas-default);
-        border: 2px solid var(--color-border-default);
-        border-radius: 8px;
-        overflow: hidden;
-        aspect-ratio: 16/9;
-        margin-bottom: 24px;
-      }
-
-      .video-feed {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .video-overlay {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        background-color: rgba(13, 17, 23, 0.8);
-        backdrop-filter: blur(8px);
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
-      }
-
-      .status-indicator {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        margin-right: 8px;
-      }
-
-      .status-online {
-        background-color: var(--color-success-emphasis);
-      }
-
-      .status-offline {
-        background-color: var(--color-fg-muted);
       }
 
       /* Controls */
       .controls {
         display: flex;
+        flex-direction: column;
         gap: 12px;
-        flex-wrap: wrap;
       }
 
       .control-group {
-        flex: 1;
-        min-width: 200px;
+        display: flex;
+        gap: 8px;
       }
 
-      .control-label {
-        display: block;
+      /* Forms */
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-label {
         font-size: 14px;
         font-weight: 500;
-        margin-bottom: 8px;
-        color: var(--color-fg-default);
+        color: var(--color-text);
       }
 
-      .slider-container {
-        position: relative;
+      .form-input,
+      .form-select {
+        background-color: var(--color-canvas-default);
+        border: 1px solid var(--color-border-default);
+        color: var(--color-text);
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
       }
 
-      .slider {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 6px;
-        border-radius: 3px;
-        background: var(--color-border-default);
+      .form-input:focus,
+      .form-select:focus {
         outline: none;
-        cursor: pointer;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.3);
       }
 
-      .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: var(--color-accent-emphasis);
-        cursor: pointer;
-        border: 2px solid var(--color-canvas-default);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .slider::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: var(--color-accent-emphasis);
-        cursor: pointer;
-        border: 2px solid var(--color-canvas-default);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .slider-value {
-        position: absolute;
-        top: -32px;
-        right: 0;
+      /* Buttons */
+      .btn {
         background-color: var(--color-btn-bg);
         border: 1px solid var(--color-border-default);
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      /* Attendance Panel */
-      .attendance-panel {
-        background-color: var(--color-canvas-subtle);
-        border: 1px solid var(--color-border-default);
-        border-radius: 12px;
-        height: fit-content;
-        position: sticky;
-        top: 100px;
-      }
-
-      .panel-header {
-        padding: 20px;
-        border-bottom: 1px solid var(--color-border-default);
-        background-color: var(--color-canvas-default);
-        border-radius: 12px 12px 0 0;
-      }
-
-      .panel-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-
-      .panel-subtitle {
-        color: var(--color-fg-muted);
+        color: var(--color-text);
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
         font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s;
+        text-align: center;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-height: 36px;
       }
 
+      .btn:hover {
+        background-color: var(--color-btn-hover);
+      }
+
+      .btn-primary {
+        background-color: var(--color-success);
+        color: white;
+        border-color: var(--color-success);
+      }
+
+      .btn-primary:hover {
+        background-color: #2ea043;
+      }
+
+      .btn-secondary {
+        background-color: var(--color-canvas-default);
+        color: var(--color-text);
+        border: 1px solid var(--color-border-default);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--color-border-default);
+      }
+
+      .btn-warning {
+        background-color: var(--color-warning);
+        color: black;
+        border-color: var(--color-warning);
+      }
+
+      .btn-danger {
+        background-color: var(--color-danger);
+        color: white;
+        border-color: var(--color-danger);
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Stats Grid */
       .stats-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        padding: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
       }
 
       .stat-card {
-        background-color: var(--color-canvas-default);
+        background-color: var(--color-canvas-subtle);
         border: 1px solid var(--color-border-default);
-        border-radius: 8px;
-        padding: 16px;
+        border-radius: 12px;
+        padding: 20px;
         text-align: center;
       }
 
       .stat-number {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 700;
-        color: var(--color-accent-emphasis);
+        color: var(--color-primary);
         margin-bottom: 4px;
       }
 
       .stat-label {
         font-size: 12px;
-        color: var(--color-fg-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        color: var(--color-text-muted);
       }
 
-      /* Attendance List */
-      .attendance-list {
-        max-height: 400px;
-        overflow-y: auto;
-        padding: 0 20px 20px;
+      /* Dashboard Layout */
+      .dashboard-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
-      .attendance-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        background-color: var(--color-canvas-default);
+      /* Controls Section */
+      .controls-section {
+        background-color: var(--color-canvas-subtle);
         border: 1px solid var(--color-border-default);
-        border-radius: 6px;
-        margin-bottom: 8px;
-        transition: background-color 0.2s;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
       }
 
-      .attendance-item:hover {
-        background-color: var(--color-btn-hover-bg);
+      .controls-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        align-items: end;
       }
 
-      .attendance-avatar {
+      /* Attendance Table */
+      .attendance-table-container {
+        background-color: var(--color-canvas-subtle);
+        border: 1px solid var(--color-border-default);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .table-header {
+        padding: 20px;
+        border-bottom: 1px solid var(--color-border-default);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .table-title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .attendance-table th,
+      .attendance-table td {
+        text-align: left;
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--color-border-default);
+      }
+
+      .attendance-table th {
+        background-color: var(--color-canvas-default);
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--color-text-muted);
+      }
+
+      .attendance-table tbody tr:hover {
+        background-color: var(--color-canvas-default);
+      }
+
+      .student-avatar {
         width: 32px;
         height: 32px;
         border-radius: 50%;
         background: linear-gradient(
           45deg,
-          var(--color-accent-emphasis),
-          var(--color-success-emphasis)
+          var(--color-accent),
+          var(--color-primary)
         );
         display: flex;
         align-items: center;
@@ -418,52 +414,133 @@
         color: white;
         font-weight: 600;
         font-size: 14px;
+        margin-right: 12px;
       }
 
-      .attendance-info {
+      .student-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .status-present {
+        background-color: rgba(35, 134, 54, 0.2);
+        color: var(--color-success);
+      }
+
+      .status-absent {
+        background-color: rgba(218, 54, 51, 0.2);
+        color: var(--color-danger);
+      }
+
+      /* Quick Actions */
+      .quick-actions {
+        background-color: var(--color-canvas-subtle);
+        border: 1px solid var(--color-border-default);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .action-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* Attendance List for Registration Tab */
+      .attendance-list {
+        background-color: var(--color-canvas-default);
+        border: 1px solid var(--color-border-default);
+        border-radius: 8px;
+        max-height: 300px;
+        overflow-y: auto;
         flex: 1;
       }
 
-      .attendance-name {
-        font-weight: 500;
+      .attendance-item {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--color-border-muted);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .attendance-item:last-child {
+        border-bottom: none;
+      }
+
+      .attendance-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .attendance-details h4 {
         font-size: 14px;
+        font-weight: 500;
         margin-bottom: 2px;
       }
 
-      .attendance-time {
+      .attendance-details p {
         font-size: 12px;
         color: var(--color-fg-muted);
       }
 
-      /* Modal Styles */
+      /* Modals */
       .modal {
         display: none;
         position: fixed;
-        top: 0;
+        z-index: 1000;
         left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(4px);
       }
 
       .modal-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         background-color: var(--color-canvas-subtle);
         border: 1px solid var(--color-border-default);
+        margin: 5% auto;
+        padding: 0;
         border-radius: 12px;
-        padding: 24px;
-        max-width: 480px;
         width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
+        max-width: 500px;
+        position: relative;
+        animation: modalSlideIn 0.3s ease;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .modal-header {
+        padding: 24px 24px 0 24px;
         margin-bottom: 20px;
       }
 
@@ -475,85 +552,116 @@
 
       .modal-close {
         position: absolute;
-        top: 16px;
         right: 16px;
+        top: 16px;
         background: none;
         border: none;
-        color: var(--color-fg-muted);
         font-size: 24px;
+        color: var(--color-fg-muted);
         cursor: pointer;
         padding: 4px;
-        border-radius: 4px;
-        transition: color 0.2s;
+        line-height: 1;
       }
 
       .modal-close:hover {
-        color: var(--color-fg-default);
-        background-color: var(--color-btn-hover-bg);
+        color: var(--color-text);
       }
 
-      /* Form Styles */
-      .form-group {
+      .modal form {
+        padding: 0 24px 24px 24px;
+      }
+
+      /* Notifications */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: var(--color-canvas-subtle);
+        border: 1px solid var(--color-border-default);
+        border-radius: 8px;
+        padding: 16px;
+        max-width: 400px;
+        z-index: 1000;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification.success {
+        border-color: var(--color-success);
+        background-color: rgba(35, 134, 54, 0.1);
+      }
+
+      .notification.error {
+        border-color: var(--color-danger);
+        background-color: rgba(218, 54, 51, 0.1);
+      }
+
+      .notification.warning {
+        border-color: var(--color-warning);
+        background-color: rgba(210, 153, 34, 0.1);
+      }
+
+      /* Empty states */
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--color-text-muted);
+      }
+
+      .empty-state-icon {
+        font-size: 48px;
         margin-bottom: 16px;
       }
 
-      .form-label {
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 6px;
-        color: var(--color-fg-default);
-      }
-
-      .form-input {
-        width: 100%;
-        padding: 8px 12px;
-        background-color: var(--color-canvas-default);
-        border: 1px solid var(--color-border-default);
-        border-radius: 6px;
-        color: var(--color-fg-default);
-        font-size: 14px;
-        font-family: inherit;
-      }
-
-      .form-input:focus {
-        outline: none;
-        border-color: var(--color-accent-emphasis);
-        box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1024px) {
-        .dashboard {
+      /* Responsive design */
+      @media (max-width: 1200px) {
+        .main-container,
+        .dashboard-layout {
           grid-template-columns: 1fr;
-          gap: 16px;
         }
 
-        .sidebar,
-        .attendance-panel {
-          position: static;
+        .controls-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 768px) {
-        .container {
+        .header {
+          padding: 12px 16px;
+        }
+
+        .tab-content {
           padding: 16px;
         }
 
-        .header-content {
+        .nav-tabs {
           padding: 0 16px;
         }
 
-        .nav-menu {
-          display: none;
-        }
-
-        .controls {
-          flex-direction: column;
+        .stats-grid {
+          grid-template-columns: 1fr;
         }
       }
 
-      /* Animations */
+      /* Animation keyframes */
+      @keyframes flash {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
       @keyframes pulse {
         0%,
         100% {
@@ -564,232 +672,243 @@
         }
       }
 
-      .recording {
+      .flash {
+        animation: flash 0.3s ease-out;
+      }
+
+      .pulse {
         animation: pulse 2s infinite;
-      }
-
-      /* Custom Scrollbar */
-      .attendance-list::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      .attendance-list::-webkit-scrollbar-track {
-        background: var(--color-canvas-default);
-      }
-
-      .attendance-list::-webkit-scrollbar-thumb {
-        background: var(--color-border-default);
-        border-radius: 3px;
-      }
-
-      .attendance-list::-webkit-scrollbar-thumb:hover {
-        background: var(--color-fg-muted);
       }
     </style>
   </head>
   <body>
     <!-- Header -->
     <header class="header">
-      <div class="header-content">
-        <a href="#" class="logo">FaceTrack Pro</a>
-        <nav>
-          <ul class="nav-menu">
-            <li><a href="#" class="nav-link">Dashboard</a></li>
-            <li><a href="#" class="nav-link">Students</a></li>
-            <li><a href="#" class="nav-link">Reports</a></li>
-            <li><a href="#" class="nav-link">Settings</a></li>
-          </ul>
-        </nav>
-      </div>
+      <h1>🎯 FaceTrack Pro - Enhanced Attendance System</h1>
+      <p>
+        AI-powered facial recognition with real-time attendance tracking and
+        comprehensive dashboard
+      </p>
     </header>
 
-    <!-- Main Container -->
-    <div class="container">
-      <!-- Dashboard Grid -->
-      <div class="dashboard">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="switchTab('registration')">
+        📸 Registration & Recognition
+      </button>
+      <button class="nav-tab" onclick="switchTab('dashboard')">
+        📊 Dashboard & Analytics
+      </button>
+    </nav>
+
+    <!-- Registration Tab Content -->
+    <div id="registrationTab" class="tab-content active">
+      <div class="main-container">
+        <!-- Video Section -->
+        <div class="video-section">
+          <div class="video-header">
+            <div class="section-title">📹 Live Camera Feed</div>
+            <div class="status-indicator">
+              <div id="cameraStatus" class="status-dot"></div>
+              <span id="cameraStatusText">Camera Offline</span>
+            </div>
+          </div>
+
+          <div class="video-container">
+            <video id="videoFeed" autoplay muted playsinline></video>
+            <canvas id="overlayCanvas" class="video-overlay"></canvas>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar">
           <!-- Camera Controls -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">📹 Camera Controls</h3>
-            <button id="startCamera" class="btn btn-primary">
-              <span>▶️</span> Start Camera
-            </button>
-            <button
-              id="stopCamera"
-              class="btn btn-danger"
-              style="display: none"
-            >
-              <span>⏹️</span> Stop Camera
-            </button>
-            <button id="registerStudent" class="btn">
-              <span>➕</span> Register Student
-            </button>
-          </div>
-
-          <!-- AI Settings -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">🤖 AI Settings</h3>
-            <div class="control-group">
-              <label class="control-label">Recognition Confidence</label>
-              <div class="slider-container">
-                <input
-                  type="range"
-                  class="slider"
-                  id="confidenceSlider"
-                  min="30"
-                  max="95"
-                  value="70"
-                  step="5"
-                />
-                <span class="slider-value" id="confidenceValue">70%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Data Management -->
-          <div class="sidebar-section">
-            <h3 class="sidebar-title">📊 Data Management</h3>
-            <button id="viewRecords" class="btn">
-              <span>👁️</span> View All Records
-            </button>
-            <button id="exportData" class="btn">
-              <span>📁</span> Export to CSV
-            </button>
-            <button id="viewStudents" class="btn">
-              <span>👥</span> View Students
-            </button>
-          </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-          <div class="content-header">
-            <h1 class="content-title">Live Recognition</h1>
-            <p class="content-subtitle">
-              AI-powered facial recognition for automatic attendance tracking
-            </p>
-          </div>
-          <div class="content-body">
-            <!-- Video Container -->
-            <div class="video-container">
-              <video
-                id="videoFeed"
-                class="video-feed"
-                autoplay
-                muted
-                playsinline
-              ></video>
-              <div class="video-overlay">
-                <span
-                  class="status-indicator status-offline"
-                  id="statusIndicator"
-                ></span>
-                <span id="statusText">Camera Offline</span>
-              </div>
-              <canvas
-                id="overlayCanvas"
-                style="
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  pointer-events: none;
-                "
-              ></canvas>
-            </div>
-
-            <!-- Recognition Info -->
+          <div>
+            <div class="section-title">🎥 Camera Controls</div>
             <div class="controls">
+              <button id="startCamera" class="btn btn-primary">
+                ▶️ Start Camera
+              </button>
+              <button id="stopCamera" class="btn btn-danger" disabled>
+                ⏹️ Stop Camera
+              </button>
+            </div>
+          </div>
+
+          <!-- Registration Controls -->
+          <div>
+            <div class="section-title">👤 Student Management</div>
+            <div class="controls">
+              <button class="btn btn-primary" onclick="openRegistrationModal()">
+                ➕ Register Student
+              </button>
               <div class="control-group">
-                <label class="control-label">Last Recognition</label>
-                <div
-                  style="
-                    padding: 12px;
-                    background: var(--color-canvas-default);
-                    border: 1px solid var(--color-border-default);
-                    border-radius: 6px;
-                  "
-                >
-                  <div id="lastRecognition" style="font-weight: 500">
-                    Waiting for detection...
-                  </div>
-                  <div
-                    id="lastConfidence"
-                    style="
-                      font-size: 12px;
-                      color: var(--color-fg-muted);
-                      margin-top: 4px;
-                    "
-                  >
-                    Confidence: N/A
-                  </div>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">System Status</label>
-                <div
-                  style="
-                    padding: 12px;
-                    background: var(--color-canvas-default);
-                    border: 1px solid var(--color-border-default);
-                    border-radius: 6px;
-                  "
-                >
-                  <div id="systemStatus" style="font-weight: 500">
-                    System Ready
-                  </div>
-                  <div
-                    id="modelStatus"
-                    style="
-                      font-size: 12px;
-                      color: var(--color-fg-muted);
-                      margin-top: 4px;
-                    "
-                  >
-                    Models loaded successfully
-                  </div>
-                </div>
+                <button class="btn btn-secondary" onclick="viewStudents()">
+                  👥 View Students
+                </button>
+                <button class="btn btn-secondary" onclick="viewRecords()">
+                  📋 View Records
+                </button>
               </div>
             </div>
           </div>
-        </main>
 
-        <!-- Attendance Panel -->
-        <aside class="attendance-panel">
-          <div class="panel-header">
-            <h2 class="panel-title">Today's Attendance</h2>
-            <p class="panel-subtitle" id="currentDate"></p>
-          </div>
-
-          <!-- Stats -->
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-number" id="presentCount">0</div>
-              <div class="stat-label">Present</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number" id="totalStudents">0</div>
-              <div class="stat-label">Total</div>
+          <!-- Today's Stats -->
+          <div>
+            <div class="section-title">📊 Today's Attendance</div>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-number" id="presentCount">0</div>
+                <div class="stat-label">Present</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" id="totalStudents">0</div>
+                <div class="stat-label">Total</div>
+              </div>
             </div>
           </div>
 
           <!-- Attendance List -->
-          <div class="attendance-list" id="attendanceList">
-            <div
-              style="
-                text-align: center;
-                padding: 40px 20px;
-                color: var(--color-fg-muted);
-              "
-            >
-              <div style="font-size: 48px; margin-bottom: 16px">📋</div>
-              <div>No attendance records yet</div>
-              <div style="font-size: 12px; margin-top: 8px">
-                Start the camera to begin tracking
+          <div style="flex: 1; display: flex; flex-direction: column">
+            <div class="section-title">🕒 Recent Activity</div>
+            <div class="attendance-list" id="attendanceList">
+              <div class="empty-state">
+                <div class="empty-state-icon">📋</div>
+                <div>No attendance records yet</div>
+                <div style="font-size: 12px; margin-top: 8px">
+                  Start the camera to begin tracking
+                </div>
               </div>
             </div>
           </div>
-        </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Tab Content -->
+    <div id="dashboardTab" class="tab-content">
+      <!-- Stats Overview -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="todayPresent">0</div>
+          <div class="stat-label">Present Today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalRegistered">0</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="attendanceRate">0%</div>
+          <div class="stat-label">Attendance Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalRecords">0</div>
+          <div class="stat-label">Total Records</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls-section">
+        <div class="controls-grid">
+          <div class="form-group">
+            <label class="form-label">Date Filter</label>
+            <input type="date" class="form-input" id="dateFilter" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Student Filter</label>
+            <select class="form-select" id="studentFilter">
+              <option value="">All Students</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Actions</label>
+            <div style="display: flex; gap: 8px">
+              <button class="btn" onclick="refreshDashboard()">
+                🔄 Refresh
+              </button>
+              <button class="btn btn-secondary" onclick="exportAttendance()">
+                📁 Export CSV
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Content -->
+      <div class="dashboard-layout">
+        <!-- Attendance Table -->
+        <div class="attendance-table-container">
+          <div class="table-header">
+            <h2 class="table-title">📊 Attendance Records</h2>
+            <span id="recordCount">Loading...</span>
+          </div>
+          <div style="overflow-x: auto">
+            <table class="attendance-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Method</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceTableBody">
+                <tr>
+                  <td colspan="5" class="empty-state">
+                    <div class="empty-state-icon">📋</div>
+                    <div>Loading attendance data...</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div>
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <h3 class="section-title">⚡ Quick Actions</h3>
+            <div class="action-list">
+              <button class="btn" onclick="markManualAttendance()">
+                ✋ Manual Attendance
+              </button>
+              <button class="btn btn-secondary" onclick="viewTodayAbsent()">
+                👻 View Absent Today
+              </button>
+              <button class="btn btn-secondary" onclick="generateReport()">
+                📈 Generate Report
+              </button>
+              <button
+                class="btn btn-secondary"
+                onclick="clearTodayAttendance()"
+              >
+                🗑️ Clear Today's Data
+              </button>
+            </div>
+          </div>
+
+          <!-- System Status -->
+          <div class="quick-actions" style="margin-top: 16px">
+            <h3 class="section-title">🔧 System Status</h3>
+            <div
+              style="
+                background-color: var(--color-canvas-default);
+                border: 1px solid var(--color-border-default);
+                border-radius: 8px;
+                padding: 16px;
+              "
+            >
+              <div id="systemStatus">Checking system...</div>
+              <div style="margin-top: 8px; font-size: 12px">
+                <div id="modelStatus">Model: Loading...</div>
+                <div id="studentsStatus">Students: Loading...</div>
+                <div id="recordsStatus">Records: Loading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -802,7 +921,7 @@
         <div class="modal-header">
           <h2 class="modal-title">Register New Student</h2>
           <p style="color: var(--color-fg-muted); font-size: 14px">
-            Enter student details to begin registration process
+            Enter student details to begin face capture registration
           </p>
         </div>
         <form id="registrationForm">
@@ -825,6 +944,15 @@
               placeholder="Enter student ID"
             />
           </div>
+          <div class="form-group">
+            <label class="form-label">Number of Face Samples</label>
+            <select class="form-select" id="maxSamples">
+              <option value="15">15 samples (Fast)</option>
+              <option value="20" selected>20 samples (Recommended)</option>
+              <option value="25">25 samples (High accuracy)</option>
+              <option value="30">30 samples (Maximum)</option>
+            </select>
+          </div>
           <div style="display: flex; gap: 12px; margin-top: 24px">
             <button
               type="button"
@@ -834,10 +962,170 @@
               Cancel
             </button>
             <button type="submit" class="btn btn-primary">
-              Start Registration
+              Start Face Capture
             </button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- Face Capture Registration Modal -->
+    <div id="faceCaptureModal" class="modal">
+      <div class="modal-content" style="max-width: 800px; width: 95%">
+        <div class="modal-header">
+          <h2 class="modal-title">📸 Face Capture Registration</h2>
+          <p style="color: var(--color-fg-muted); font-size: 14px">
+            Look at the camera and move slightly for better face coverage
+          </p>
+        </div>
+        <div style="padding: 0 24px 24px 24px">
+          <!-- Progress Information -->
+          <div
+            style="
+              background-color: var(--color-canvas-default);
+              border: 1px solid var(--color-border-default);
+              border-radius: 8px;
+              padding: 16px;
+              margin-bottom: 20px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 12px;
+              "
+            >
+              <span
+                id="captureStudentName"
+                style="font-weight: 600; font-size: 16px"
+                >Registering: [Student Name]</span
+              >
+              <span
+                id="captureProgress"
+                style="font-size: 14px; color: var(--color-text-muted)"
+                >0/20 samples</span
+              >
+            </div>
+            <div
+              style="
+                background-color: var(--color-border-default);
+                border-radius: 4px;
+                height: 8px;
+                overflow: hidden;
+                margin-bottom: 8px;
+              "
+            >
+              <div
+                id="captureProgressBar"
+                style="
+                  background: linear-gradient(
+                    90deg,
+                    var(--color-success),
+                    var(--color-accent)
+                  );
+                  height: 100%;
+                  width: 0%;
+                  transition: width 0.3s ease;
+                "
+              ></div>
+            </div>
+            <div
+              id="captureStatus"
+              style="
+                font-size: 12px;
+                color: var(--color-text-muted);
+                text-align: center;
+              "
+            >
+              Initializing face capture...
+            </div>
+          </div>
+
+          <!-- Camera Feed for Registration -->
+          <div
+            style="
+              background-color: var(--color-canvas-default);
+              border: 2px solid var(--color-border-default);
+              border-radius: 8px;
+              position: relative;
+              min-height: 400px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 20px;
+            "
+          >
+            <video
+              id="registrationVideoFeed"
+              autoplay
+              muted
+              playsinline
+              style="max-width: 100%; max-height: 400px; border-radius: 6px"
+            ></video>
+            <canvas
+              id="registrationOverlayCanvas"
+              style="position: absolute; top: 0; left: 0; pointer-events: none"
+            ></canvas>
+
+            <!-- Quality Indicators -->
+            <div
+              style="
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 12px;
+                border-radius: 6px;
+              "
+            >
+              <div
+                style="
+                  font-size: 12px;
+                  font-weight: 600;
+                  margin-bottom: 8px;
+                  color: white;
+                "
+              >
+                Quality Check
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div id="lightingQualityDot" class="quality-dot"></div>
+                  <span style="font-size: 11px; color: white">Lighting</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div id="sharpnessQualityDot" class="quality-dot"></div>
+                  <span style="font-size: 11px; color: white">Sharpness</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <div id="faceSizeQualityDot" class="quality-dot"></div>
+                  <span style="font-size: 11px; color: white">Face Size</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Control Buttons -->
+          <div style="display: flex; gap: 12px; justify-content: center">
+            <button
+              id="cancelCaptureBtn"
+              class="btn btn-danger"
+              onclick="cancelFaceCapture()"
+            >
+              ❌ Cancel Registration
+            </button>
+            <button
+              id="completeCaptureBtn"
+              class="btn btn-primary"
+              style="display: none"
+              onclick="completeFaceCapture()"
+            >
+              ✅ Complete Registration
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -848,139 +1136,208 @@
           &times;
         </button>
         <div class="modal-header">
-          <h2 class="modal-title">Attendance Records</h2>
+          <h2 class="modal-title">📋 Attendance Records</h2>
           <p style="color: var(--color-fg-muted); font-size: 14px">
-            Complete attendance history
+            Complete attendance history and statistics
           </p>
         </div>
-        <div id="recordsContent">
-          <div
-            style="
-              text-align: center;
-              padding: 40px;
-              color: var(--color-fg-muted);
-            "
-          >
-            <div style="font-size: 48px; margin-bottom: 16px">📊</div>
-            <div>No records available</div>
-          </div>
+        <div style="padding: 0 24px 24px 24px">
+          <div id="recordsContent">Loading records...</div>
         </div>
       </div>
     </div>
 
+    <!-- Manual Attendance Modal -->
+    <div id="manualAttendanceModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeManualAttendanceModal()">
+          &times;
+        </button>
+        <div class="modal-header">
+          <h2 class="modal-title">✋ Manual Attendance Entry</h2>
+          <p style="color: var(--color-fg-muted); font-size: 14px">
+            Manually mark attendance for a student
+          </p>
+        </div>
+        <form id="manualAttendanceForm">
+          <div class="form-group">
+            <label class="form-label">Select Student</label>
+            <select class="form-select" id="manualStudentSelect" required>
+              <option value="">Choose a student...</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 12px; margin-top: 24px">
+            <button
+              type="button"
+              class="btn"
+              onclick="closeManualAttendanceModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              ✅ Mark Present
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script>
-      // === Backend URL Configuration ===
-      // Change this if your backend runs on a different host/port
-      const BACKEND_URL = "http://127.0.0.1:5000";
+      // Configuration
+      const BACKEND_URL = "http://localhost:5000";
 
       // Application State
-      let isRecording = false;
       let stream = null;
+      let isRecording = false;
       let attendanceData = [];
       let registeredStudents = [];
       let recognitionInterval = null;
-      let confidenceThreshold = 0.7;
+      let currentTab = "registration";
+
+      // Face capture registration state
+      let isCapturingFaces = false;
+      let captureStream = null;
+      let captureInterval = null;
+      let currentRegistrationStudent = null;
+      let maxCaptureAttempts = 20;
+      let capturedSamples = 0;
 
       // DOM Elements
       const videoFeed = document.getElementById("videoFeed");
-      const statusIndicator = document.getElementById("statusIndicator");
-      const statusText = document.getElementById("statusText");
+      const overlayCanvas = document.getElementById("overlayCanvas");
+      const ctx = overlayCanvas.getContext("2d");
       const startCameraBtn = document.getElementById("startCamera");
       const stopCameraBtn = document.getElementById("stopCamera");
-      const registerStudentBtn = document.getElementById("registerStudent");
-      const confidenceSlider = document.getElementById("confidenceSlider");
-      const confidenceValue = document.getElementById("confidenceValue");
-      const lastRecognition = document.getElementById("lastRecognition");
-      const lastConfidence = document.getElementById("lastConfidence");
-      const attendanceList = document.getElementById("attendanceList");
+      const cameraStatus = document.getElementById("cameraStatus");
+      const cameraStatusText = document.getElementById("cameraStatusText");
+
+      // Registration elements
       const presentCount = document.getElementById("presentCount");
       const totalStudents = document.getElementById("totalStudents");
-      const currentDate = document.getElementById("currentDate");
-      const overlayCanvas = document.getElementById("overlayCanvas");
+      const attendanceList = document.getElementById("attendanceList");
+
+      // Dashboard elements
+      const todayPresent = document.getElementById("todayPresent");
+      const totalRegistered = document.getElementById("totalRegistered");
+      const attendanceRate = document.getElementById("attendanceRate");
+      const totalRecords = document.getElementById("totalRecords");
+      const dateFilter = document.getElementById("dateFilter");
+      const studentFilter = document.getElementById("studentFilter");
+      const recordCount = document.getElementById("recordCount");
+      const attendanceTableBody = document.getElementById(
+        "attendanceTableBody"
+      );
 
       // Initialize Application
       document.addEventListener("DOMContentLoaded", function () {
-        initializeApp();
         setupEventListeners();
-        updateDateTime();
         loadStoredData();
+        checkSystemStatus();
+        loadStudentsFromBackend();
+
+        // Set today's date as default
+        const today = new Date().toISOString().split("T")[0];
+        dateFilter.value = today;
       });
 
-      function initializeApp() {
-        // Set current date
-        const today = new Date();
-        currentDate.textContent = today.toLocaleDateString("en-US", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-
-        // Initialize canvas
-        const canvas = overlayCanvas;
-        const video = videoFeed;
-        canvas.width = video.videoWidth || 640;
-        canvas.height = video.videoHeight || 480;
-      }
-
       function setupEventListeners() {
-        // Camera controls
         startCameraBtn.addEventListener("click", startCamera);
         stopCameraBtn.addEventListener("click", stopCamera);
-        registerStudentBtn.addEventListener("click", openRegistrationModal);
 
-        // Slider controls
-        confidenceSlider.addEventListener("input", updateConfidenceThreshold);
-
-        // Data management
-        document
-          .getElementById("viewRecords")
-          .addEventListener("click", openRecordsModal);
-        document
-          .getElementById("exportData")
-          .addEventListener("click", exportToCSV);
-        document
-          .getElementById("viewStudents")
-          .addEventListener("click", viewStudents);
-
-        // Registration form
         document
           .getElementById("registrationForm")
           .addEventListener("submit", startStudentRegistration);
+        document
+          .getElementById("manualAttendanceForm")
+          .addEventListener("submit", submitManualAttendance);
 
-        // Video events
-        videoFeed.addEventListener("loadedmetadata", function () {
-          overlayCanvas.width = videoFeed.videoWidth;
-          overlayCanvas.height = videoFeed.videoHeight;
+        dateFilter.addEventListener("change", filterAttendance);
+        studentFilter.addEventListener("change", filterAttendance);
+
+        // Handle window resize for canvas
+        window.addEventListener("resize", resizeCanvas);
+
+        // Close modals when clicking outside
+        window.addEventListener("click", function (event) {
+          const modals = document.querySelectorAll(".modal");
+          modals.forEach((modal) => {
+            if (event.target === modal) {
+              modal.style.display = "none";
+            }
+          });
+        });
+
+        // Handle page visibility changes
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden && isRecording) {
+            console.log("Page hidden, pausing recognition");
+            stopRecognition();
+          } else if (!document.hidden && isRecording) {
+            console.log("Page visible, resuming recognition");
+            startRecognition();
+          }
+        });
+
+        // Cleanup on page unload
+        window.addEventListener("beforeunload", function () {
+          if (stream) {
+            stream.getTracks().forEach((track) => track.stop());
+          }
         });
       }
 
+      // Tab Management
+      function switchTab(tabName) {
+        // Update tab buttons
+        document.querySelectorAll(".nav-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        event.target.classList.add("active");
+
+        // Update tab content
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+        document.getElementById(tabName + "Tab").classList.add("active");
+
+        currentTab = tabName;
+
+        // Load data for dashboard when switching to it
+        if (tabName === "dashboard") {
+          loadDashboardData();
+        }
+      }
+
+      // Camera Functions
       async function startCamera() {
         try {
           stream = await navigator.mediaDevices.getUserMedia({
             video: {
-              width: { ideal: 1280 },
-              height: { ideal: 720 },
-              facingMode: "user",
+              width: { ideal: 640 },
+              height: { ideal: 480 },
             },
           });
 
           videoFeed.srcObject = stream;
-          isRecording = true;
+          videoFeed.onloadedmetadata = function () {
+            resizeCanvas();
+            startRecognition();
+          };
 
           // Update UI
-          statusIndicator.className = "status-indicator status-online";
-          statusText.textContent = "Camera Online";
-          startCameraBtn.style.display = "none";
-          stopCameraBtn.style.display = "block";
+          startCameraBtn.disabled = true;
+          stopCameraBtn.disabled = false;
+          cameraStatus.classList.add("active");
+          cameraStatusText.textContent = "Camera Active";
+          isRecording = true;
 
-          // Start recognition
-          startRecognition();
-
-          console.log("Camera started successfully");
+          showNotification("📹 Camera started successfully", "success");
         } catch (error) {
           console.error("Error accessing camera:", error);
-          alert("Could not access camera. Please check permissions.");
+          showNotification(
+            "❌ Error accessing camera. Please check permissions.",
+            "error"
+          );
         }
       }
 
@@ -991,35 +1348,63 @@
         }
 
         videoFeed.srcObject = null;
-        isRecording = false;
-
-        // Update UI
-        statusIndicator.className = "status-indicator status-offline";
-        statusText.textContent = "Camera Offline";
-        startCameraBtn.style.display = "block";
-        stopCameraBtn.style.display = "none";
-
-        // Stop recognition
         stopRecognition();
 
+        // Update UI
+        startCameraBtn.disabled = false;
+        stopCameraBtn.disabled = true;
+        cameraStatus.classList.remove("active");
+        cameraStatusText.textContent = "Camera Offline";
+        isRecording = false;
+
         // Clear canvas
-        const ctx = overlayCanvas.getContext("2d");
         ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
 
-        console.log("Camera stopped");
+        showNotification("📹 Camera stopped", "success");
       }
 
-      function startRecognition() {
-        if (recognitionInterval) {
-          clearInterval(recognitionInterval);
+      function resizeCanvas() {
+        if (videoFeed.videoWidth && videoFeed.videoHeight) {
+          overlayCanvas.width = videoFeed.offsetWidth;
+          overlayCanvas.height = videoFeed.offsetHeight;
         }
+      }
 
-        // Simulate face recognition every 2 seconds
-        recognitionInterval = setInterval(() => {
-          if (isRecording && videoFeed.videoWidth > 0) {
-            performFaceRecognition();
+      // Recognition Functions
+      function startRecognition() {
+        if (recognitionInterval) return;
+
+        recognitionInterval = setInterval(async () => {
+          if (!stream || !isRecording) return;
+
+          try {
+            // Capture frame
+            const canvas = document.createElement("canvas");
+            canvas.width = videoFeed.videoWidth;
+            canvas.height = videoFeed.videoHeight;
+            const context = canvas.getContext("2d");
+            context.drawImage(videoFeed, 0, 0);
+
+            const frameData = canvas.toDataURL("image/jpeg", 0.8);
+
+            // Send for recognition
+            const response = await fetch(`${BACKEND_URL}/api/recognize`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                frame: frameData,
+                confidence: 0.7,
+              }),
+            });
+
+            if (response.ok) {
+              const result = await response.json();
+              handleRecognitionResult(result);
+            }
+          } catch (error) {
+            console.error("Recognition error:", error);
           }
-        }, 2000);
+        }, 3000); // Recognition every 3 seconds
       }
 
       function stopRecognition() {
@@ -1029,228 +1414,104 @@
         }
       }
 
-      async function performFaceRecognition() {
-        try {
-          // Create canvas to capture video frame
-          const canvas = document.createElement("canvas");
-          const ctx = canvas.getContext("2d");
-          canvas.width = videoFeed.videoWidth;
-          canvas.height = videoFeed.videoHeight;
-
-          // Draw current video frame
-          ctx.drawImage(videoFeed, 0, 0);
-
-          // Convert to blob and send to backend
-          canvas.toBlob(
-            async (blob) => {
-              const formData = new FormData();
-              formData.append("frame", blob);
-              formData.append("confidence", confidenceThreshold);
-
-              try {
-                const response = await fetch(`${BACKEND_URL}/api/recognize`, {
-                  method: "POST",
-                  body: formData,
-                });
-
-                if (response.ok) {
-                  const result = await response.json();
-                  handleRecognitionResult(result);
-                }
-              } catch (error) {
-                console.log(
-                  "Recognition service not available, using demo mode"
-                );
-                simulateRecognition();
-              }
-            },
-            "image/jpeg",
-            0.8
-          );
-        } catch (error) {
-          console.error("Recognition error:", error);
-          simulateRecognition();
-        }
-      }
-
-      function simulateRecognition() {
-        // Demo mode - simulate recognition results
-        const demoStudents = [
-          "John Doe",
-          "Jane Smith",
-          "Mike Johnson",
-          "Sarah Wilson",
-          "David Brown",
-        ];
-
-        if (Math.random() > 0.7) {
-          // 30% chance of recognition
-          const randomStudent =
-            demoStudents[Math.floor(Math.random() * demoStudents.length)];
-          const confidence = 0.6 + Math.random() * 0.3; // 60-90% confidence
-
-          const result = {
-            recognized: true,
-            name: randomStudent,
-            confidence: confidence,
-            bbox: {
-              x: 100 + Math.random() * 200,
-              y: 80 + Math.random() * 150,
-              width: 120 + Math.random() * 80,
-              height: 160 + Math.random() * 100,
-            },
-          };
-
-          handleRecognitionResult(result);
-        } else {
-          // Show face detection without recognition
-          drawFaceDetection(
-            {
-              x: 150 + Math.random() * 100,
-              y: 100 + Math.random() * 100,
-              width: 140,
-              height: 180,
-            },
-            false
-          );
-        }
-      }
-
       function handleRecognitionResult(result) {
-        if (result.recognized && result.confidence >= confidenceThreshold) {
-          // Update last recognition
-          lastRecognition.textContent = result.name;
-          lastConfidence.textContent = `Confidence: ${(
-            result.confidence * 100
-          ).toFixed(1)}%`;
-
-          // Draw face detection box
-          drawFaceDetection(result.bbox, true, result.name);
-
-          // Mark attendance
-          markAttendance(result.name);
-        } else if (result.bbox) {
-          // Draw detection box without recognition
-          drawFaceDetection(result.bbox, false);
-        }
-      }
-
-      function drawFaceDetection(bbox, recognized = false, name = "") {
-        const ctx = overlayCanvas.getContext("2d");
+        // Clear canvas
         ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
 
-        // Scale coordinates to canvas size
+        if (result.faces && result.faces.length > 0) {
+          for (const face of result.faces) {
+            if (face.bbox) {
+              drawFaceRectangle(
+                face.bbox,
+                face.recognized,
+                face.name,
+                face.confidence
+              );
+            }
+
+            // Mark attendance if recognized
+            if (face.recognized && face.name) {
+              markAttendance(face.name);
+            }
+          }
+        }
+      }
+
+      function drawFaceRectangle(bbox, recognized, name, confidence) {
+        const [x, y, w, h] = bbox;
+
+        // Scale coordinates
         const scaleX = overlayCanvas.width / videoFeed.videoWidth;
         const scaleY = overlayCanvas.height / videoFeed.videoHeight;
 
-        const x = bbox.x * scaleX;
-        const y = bbox.y * scaleY;
-        const width = bbox.width * scaleX;
-        const height = bbox.height * scaleY;
+        const scaledX = x * scaleX;
+        const scaledY = y * scaleY;
+        const scaledW = w * scaleX;
+        const scaledH = h * scaleY;
 
         // Draw rectangle
-        ctx.strokeStyle = recognized ? "#238636" : "#1f6feb";
+        ctx.strokeStyle = recognized ? "#22c55e" : "#ef4444";
         ctx.lineWidth = 3;
-        ctx.strokeRect(x, y, width, height);
+        ctx.strokeRect(scaledX, scaledY, scaledW, scaledH);
 
-        // Draw name label if recognized
-        if (recognized && name) {
-          ctx.fillStyle = recognized ? "#238636" : "#1f6feb";
-          ctx.fillRect(x, y - 30, ctx.measureText(name).width + 20, 25);
+        // Draw label
+        ctx.fillStyle = recognized ? "#22c55e" : "#ef4444";
+        ctx.fillRect(scaledX, scaledY - 30, scaledW, 25);
 
-          ctx.fillStyle = "white";
-          ctx.font =
-            "14px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif";
-          ctx.fillText(name, x + 10, y - 10);
-        }
+        ctx.fillStyle = "white";
+        ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+        ctx.textAlign = "center";
+
+        const label = recognized
+          ? `${name} (${(confidence * 100).toFixed(0)}%)`
+          : `Unknown (${(confidence * 100).toFixed(0)}%)`;
+        ctx.fillText(label, scaledX + scaledW / 2, scaledY - 10);
       }
 
-      function markAttendance(studentName) {
-        const today = new Date().toDateString();
-        const now = new Date();
-
-        // Check if already marked today
-        const existingRecord = attendanceData.find(
-          (record) => record.name === studentName && record.date === today
-        );
-
-        if (!existingRecord) {
-          const attendanceRecord = {
-            name: studentName,
-            date: today,
-            time: now.toLocaleTimeString(),
-            timestamp: now.getTime(),
-          };
-
-          attendanceData.unshift(attendanceRecord);
-          updateAttendanceUI();
-          saveToStorage();
-
-          // Show notification
-          showNotification(`✅ ${studentName} marked present`);
-        }
-      }
-
-      function updateAttendanceUI() {
-        const today = new Date().toDateString();
-        const todayAttendance = attendanceData.filter(
-          (record) => record.date === today
-        );
-
-        // Update stats
-        presentCount.textContent = todayAttendance.length;
-        totalStudents.textContent =
-          registeredStudents.length || todayAttendance.length;
-
-        // Update list
-        if (todayAttendance.length > 0) {
-          attendanceList.innerHTML = "";
-          todayAttendance.forEach((record) => {
-            const item = createAttendanceItem(record);
-            attendanceList.appendChild(item);
+      // Attendance Functions
+      async function markAttendance(studentName) {
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/attendance`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: studentName,
+              marked_by: "face_recognition",
+            }),
           });
+
+          const result = await response.json();
+
+          if (result.success) {
+            if (!result.already_present) {
+              showNotification(`✅ ${studentName} marked present`, "success");
+
+              // Add to local attendance data
+              const now = new Date();
+              const attendanceRecord = {
+                name: studentName,
+                date: now.toISOString().split("T")[0],
+                time: now.toLocaleTimeString("en-US", {
+                  hour12: false,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                }),
+                timestamp: now.toISOString(),
+                marked_by: "face_recognition",
+              };
+
+              attendanceData.unshift(attendanceRecord);
+              updateAttendanceUI();
+              saveStoredData();
+            }
+          }
+        } catch (error) {
+          console.error("Error marking attendance:", error);
         }
       }
 
-      function createAttendanceItem(record) {
-        const item = document.createElement("div");
-        item.className = "attendance-item";
-
-        const initials = record.name
-          .split(" ")
-          .map((n) => n[0])
-          .join("")
-          .toUpperCase();
-
-        item.innerHTML = `
-                <div class="attendance-avatar">${initials}</div>
-                <div class="attendance-info">
-                    <div class="attendance-name">${record.name}</div>
-                    <div class="attendance-time">${record.time}</div>
-                </div>
-            `;
-
-        return item;
-      }
-
-      function updateConfidenceThreshold() {
-        confidenceThreshold = confidenceSlider.value / 100;
-        confidenceValue.textContent = `${confidenceSlider.value}%`;
-      }
-
-      function updateDateTime() {
-        setInterval(() => {
-          const now = new Date();
-          currentDate.textContent = now.toLocaleDateString("en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-        }, 60000); // Update every minute
-      }
-
-      // Modal Functions
+      // Registration Functions
       function openRegistrationModal() {
         document.getElementById("registrationModal").style.display = "block";
       }
@@ -1260,65 +1521,17 @@
         document.getElementById("registrationForm").reset();
       }
 
-      function openRecordsModal() {
-        const modal = document.getElementById("recordsModal");
-        const content = document.getElementById("recordsContent");
-
-        if (attendanceData.length > 0) {
-          content.innerHTML = createRecordsTable();
-        } else {
-          content.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: var(--color-fg-muted);">
-                        <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
-                        <div>No records available</div>
-                        <div style="font-size: 12px; margin-top: 8px;">Start tracking to see attendance records</div>
-                    </div>
-                `;
-        }
-
-        modal.style.display = "block";
-      }
-
-      function closeRecordsModal() {
-        document.getElementById("recordsModal").style.display = "none";
-      }
-
-      function createRecordsTable() {
-        let html = `
-                <div style="max-height: 400px; overflow-y: auto;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead>
-                            <tr style="background: var(--color-canvas-default); border-bottom: 1px solid var(--color-border-default);">
-                                <th style="padding: 12px; text-align: left; font-weight: 600;">Student</th>
-                                <th style="padding: 12px; text-align: left; font-weight: 600;">Date</th>
-                                <th style="padding: 12px; text-align: left; font-weight: 600;">Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            `;
-
-        attendanceData.forEach((record) => {
-          html += `
-                    <tr style="border-bottom: 1px solid var(--color-border-muted);">
-                        <td style="padding: 12px;">${record.name}</td>
-                        <td style="padding: 12px; color: var(--color-fg-muted);">${record.date}</td>
-                        <td style="padding: 12px; color: var(--color-fg-muted);">${record.time}</td>
-                    </tr>
-                `;
-        });
-
-        html += "</tbody></table></div>";
-        return html;
-      }
-
       async function startStudentRegistration(event) {
         event.preventDefault();
 
         const name = document.getElementById("studentName").value.trim();
         const studentId = document.getElementById("studentId").value.trim();
+        const maxSamples = parseInt(
+          document.getElementById("maxSamples").value
+        );
 
         if (!name) {
-          alert("Please enter a student name");
+          showNotification("Please enter a student name", "error");
           return;
         }
 
@@ -1326,7 +1539,7 @@
         if (registeredStudents.some((student) => student.name === name)) {
           if (
             !confirm(
-              `Student "${name}" already exists. Do you want to re-register?`
+              `Student "${name}" already exists. Do you want to re-register with new face samples?`
             )
           ) {
             return;
@@ -1335,176 +1548,1092 @@
 
         closeRegistrationModal();
 
-        // Start registration process
-        showNotification(`📸 Starting registration for ${name}...`);
+        // Start face capture registration
+        await startFaceCaptureRegistration(name, studentId, maxSamples);
+      }
 
+      async function startFaceCaptureRegistration(
+        studentName,
+        studentId,
+        maxSamples
+      ) {
         try {
-          // In a real implementation, this would capture multiple face samples
-          // and send them to the backend for training
-          // await simulateRegistration(name, studentId);
-          // Real backend registration
-          const response = await fetch(`${BACKEND_URL}/api/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: name, id: studentId }),
-          });
-          if (response.ok) {
-            const result = await response.json();
-            showNotification(`✅ ${name} registered successfully!`);
-            // Optionally update registeredStudents from backend
-            fetchStudentsFromBackend();
-          } else {
-            const error = await response.json();
+          // First, start the registration session on the backend
+          const response = await fetch(
+            `${BACKEND_URL}/api/registration/start`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: studentName,
+                id: studentId || null,
+                max_samples: maxSamples,
+              }),
+            }
+          );
+
+          const result = await response.json();
+
+          if (!response.ok || result.error) {
             showNotification(
-              `❌ Registration failed for ${name}: ${
-                error.error || error.message
-              }`
+              `Failed to start registration: ${result.error}`,
+              "error"
             );
+            return;
           }
+
+          // Initialize face capture
+          currentRegistrationStudent = studentName;
+          maxCaptureAttempts = maxSamples;
+          capturedSamples = 0;
+          isCapturingFaces = true;
+
+          // Update UI
+          document.getElementById(
+            "captureStudentName"
+          ).textContent = `Registering: ${studentName}`;
+          document.getElementById(
+            "captureProgress"
+          ).textContent = `0/${maxSamples} samples`;
+          document.getElementById("captureProgressBar").style.width = "0%";
+          document.getElementById("captureStatus").textContent =
+            "Starting camera for face capture...";
+
+          // Show face capture modal
+          document.getElementById("faceCaptureModal").style.display = "block";
+
+          // Start camera for registration
+          await startRegistrationCamera();
+
+          showNotification(
+            `Started face capture registration for ${studentName}`,
+            "success"
+          );
         } catch (error) {
-          console.error("Registration error:", error);
-          showNotification(`❌ Registration failed for ${name}`);
+          console.error("Error starting face capture registration:", error);
+          showNotification(
+            "Failed to start face capture registration",
+            "error"
+          );
         }
       }
 
-      function viewStudents() {
-        // Fetch students from backend
-        fetchStudentsFromBackend(true);
+      async function startRegistrationCamera() {
+        try {
+          captureStream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              width: { ideal: 640 },
+              height: { ideal: 480 },
+            },
+          });
+
+          const registrationVideo = document.getElementById(
+            "registrationVideoFeed"
+          );
+          const registrationCanvas = document.getElementById(
+            "registrationOverlayCanvas"
+          );
+
+          registrationVideo.srcObject = captureStream;
+
+          registrationVideo.onloadedmetadata = function () {
+            // Resize canvas to match video
+            registrationCanvas.width = registrationVideo.offsetWidth;
+            registrationCanvas.height = registrationVideo.offsetHeight;
+
+            // Start face capture process
+            startFaceCaptureProcess();
+          };
+
+          document.getElementById("captureStatus").textContent =
+            "Camera ready - look at the camera and move slightly";
+        } catch (error) {
+          console.error("Error starting registration camera:", error);
+          showNotification("Error accessing camera for registration", "error");
+          cancelFaceCapture();
+        }
       }
 
-      async function fetchStudentsFromBackend(showAlert = false) {
+      function startFaceCaptureProcess() {
+        if (!isCapturingFaces || !currentRegistrationStudent) return;
+
+        captureInterval = setInterval(async () => {
+          if (!isCapturingFaces || capturedSamples >= maxCaptureAttempts) {
+            clearInterval(captureInterval);
+            return;
+          }
+
+          await processCaptureFrame();
+        }, 1000); // Attempt capture every 1 second
+      }
+
+      async function processCaptureFrame() {
+        try {
+          if (!captureStream || !isCapturingFaces) return;
+
+          const registrationVideo = document.getElementById(
+            "registrationVideoFeed"
+          );
+          const canvas = document.createElement("canvas");
+          canvas.width = registrationVideo.videoWidth;
+          canvas.height = registrationVideo.videoHeight;
+          const context = canvas.getContext("2d");
+          context.drawImage(registrationVideo, 0, 0);
+
+          const frameData = canvas.toDataURL("image/jpeg", 0.8);
+
+          // Send frame to backend for processing
+          const response = await fetch(
+            `${BACKEND_URL}/api/registration/process`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                student_name: currentRegistrationStudent,
+                frame: frameData,
+                quality_threshold: 70,
+              }),
+            }
+          );
+
+          const result = await response.json();
+
+          if (response.ok) {
+            handleCaptureResult(result);
+          } else {
+            console.error("Capture processing error:", result.error);
+            document.getElementById(
+              "captureStatus"
+            ).textContent = `Error: ${result.error}`;
+          }
+        } catch (error) {
+          console.error("Error processing capture frame:", error);
+        }
+      }
+
+      function handleCaptureResult(result) {
+        const registrationCanvas = document.getElementById(
+          "registrationOverlayCanvas"
+        );
+        const registrationVideo = document.getElementById(
+          "registrationVideoFeed"
+        );
+        const ctx = registrationCanvas.getContext("2d");
+
+        // Clear previous drawings
+        ctx.clearRect(
+          0,
+          0,
+          registrationCanvas.width,
+          registrationCanvas.height
+        );
+
+        // Update quality indicators
+        updateCaptureQualityIndicators(result);
+
+        if (result.face_detected) {
+          // Draw face rectangle if detected
+          if (result.bbox) {
+            drawCaptureRectangle(
+              ctx,
+              result.bbox,
+              result.sample_captured,
+              registrationVideo
+            );
+          }
+
+          if (result.sample_captured) {
+            // Sample was captured successfully
+            capturedSamples = result.captured_count;
+            const progress = (capturedSamples / maxCaptureAttempts) * 100;
+
+            // Update progress UI
+            document.getElementById(
+              "captureProgress"
+            ).textContent = `${capturedSamples}/${maxCaptureAttempts} samples`;
+            document.getElementById(
+              "captureProgressBar"
+            ).style.width = `${progress}%`;
+            document.getElementById("captureStatus").textContent =
+              result.message;
+
+            // Show capture flash effect
+            showCaptureFlash();
+
+            // Check if registration is complete
+            if (result.success && result.student_data) {
+              completeFaceCaptureSuccess(result);
+            }
+          } else if (result.quality_too_low) {
+            document.getElementById("captureStatus").textContent =
+              result.message;
+          } else if (result.face_too_small) {
+            document.getElementById("captureStatus").textContent =
+              result.message;
+          }
+        } else {
+          document.getElementById("captureStatus").textContent =
+            "No face detected - look at the camera";
+          resetCaptureQualityIndicators();
+        }
+      }
+
+      function drawCaptureRectangle(ctx, bbox, captured, video) {
+        const [x, y, w, h] = bbox;
+
+        // Scale coordinates to canvas size
+        const scaleX = ctx.canvas.width / video.videoWidth;
+        const scaleY = ctx.canvas.height / video.videoHeight;
+
+        const scaledX = x * scaleX;
+        const scaledY = y * scaleY;
+        const scaledW = w * scaleX;
+        const scaledH = h * scaleY;
+
+        // Draw main rectangle
+        ctx.strokeStyle = captured ? "#22c55e" : "#1f6feb";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(scaledX, scaledY, scaledW, scaledH);
+
+        // Draw corner brackets for registration mode
+        const cornerSize = 20;
+        ctx.strokeStyle = captured ? "#22c55e" : "#f59e0b";
+        ctx.lineWidth = 4;
+
+        // Top-left corner
+        ctx.beginPath();
+        ctx.moveTo(scaledX, scaledY + cornerSize);
+        ctx.lineTo(scaledX, scaledY);
+        ctx.lineTo(scaledX + cornerSize, scaledY);
+        ctx.stroke();
+
+        // Top-right corner
+        ctx.beginPath();
+        ctx.moveTo(scaledX + scaledW - cornerSize, scaledY);
+        ctx.lineTo(scaledX + scaledW, scaledY);
+        ctx.lineTo(scaledX + scaledW, scaledY + cornerSize);
+        ctx.stroke();
+
+        // Bottom-left corner
+        ctx.beginPath();
+        ctx.moveTo(scaledX, scaledY + scaledH - cornerSize);
+        ctx.lineTo(scaledX, scaledY + scaledH);
+        ctx.lineTo(scaledX + cornerSize, scaledY + scaledH);
+        ctx.stroke();
+
+        // Bottom-right corner
+        ctx.beginPath();
+        ctx.moveTo(scaledX + scaledW - cornerSize, scaledY + scaledH);
+        ctx.lineTo(scaledX + scaledW, scaledY + scaledH);
+        ctx.lineTo(scaledX + scaledW, scaledY + scaledH - cornerSize);
+        ctx.stroke();
+
+        // Draw status label
+        ctx.fillStyle = captured ? "#22c55e" : "#1f6feb";
+        ctx.fillRect(scaledX, scaledY - 35, scaledW, 30);
+
+        ctx.fillStyle = "white";
+        ctx.font = '14px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+        ctx.textAlign = "center";
+        const label = captured ? "CAPTURED! ✓" : "DETECTING...";
+        ctx.fillText(label, scaledX + scaledW / 2, scaledY - 15);
+      }
+
+      function updateCaptureQualityIndicators(result) {
+        const lightingDot = document.getElementById("lightingQualityDot");
+        const sharpnessDot = document.getElementById("sharpnessQualityDot");
+        const faceSizeDot = document.getElementById("faceSizeQualityDot");
+
+        if (result.face_detected) {
+          const quality = result.quality_score || 50;
+
+          // Simulate individual quality metrics based on overall score
+          const lighting = quality + (Math.random() - 0.5) * 20;
+          const sharpness = quality + (Math.random() - 0.5) * 20;
+          const faceSize = result.face_too_small
+            ? 30
+            : quality + (Math.random() - 0.5) * 20;
+
+          lightingDot.className = `quality-dot ${getQualityClass(lighting)}`;
+          sharpnessDot.className = `quality-dot ${getQualityClass(sharpness)}`;
+          faceSizeDot.className = `quality-dot ${getQualityClass(faceSize)}`;
+        } else {
+          resetCaptureQualityIndicators();
+        }
+      }
+
+      function resetCaptureQualityIndicators() {
+        document.getElementById("lightingQualityDot").className = "quality-dot";
+        document.getElementById("sharpnessQualityDot").className =
+          "quality-dot";
+        document.getElementById("faceSizeQualityDot").className = "quality-dot";
+      }
+
+      function getQualityClass(score) {
+        if (score > 75) return "good";
+        if (score > 50) return "warning";
+        return "error";
+      }
+
+      function showCaptureFlash() {
+        const video = document.getElementById("registrationVideoFeed");
+        const flash = document.createElement("div");
+        flash.style.cssText = `
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(34, 197, 94, 0.4);
+          pointer-events: none;
+          border-radius: 8px;
+          animation: flash 0.3s ease-out;
+        `;
+
+        video.parentElement.appendChild(flash);
+        setTimeout(() => flash.remove(), 300);
+      }
+
+      function completeFaceCaptureSuccess(result) {
+        // Registration completed successfully
+        isCapturingFaces = false;
+
+        if (captureInterval) {
+          clearInterval(captureInterval);
+          captureInterval = null;
+        }
+
+        document.getElementById(
+          "captureStatus"
+        ).textContent = `✅ Registration completed successfully!`;
+        document.getElementById("cancelCaptureBtn").textContent = "Close";
+        document.getElementById("completeCaptureBtn").style.display = "block";
+
+        showNotification(
+          `🎉 ${result.student_data.name} registered successfully with ${result.student_data.samples_count} face samples!`,
+          "success"
+        );
+
+        // Update students list
+        loadStudentsFromBackend();
+      }
+
+      async function cancelFaceCapture() {
+        try {
+          if (currentRegistrationStudent && isCapturingFaces) {
+            // Cancel registration on backend
+            await fetch(`${BACKEND_URL}/api/registration/cancel`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                student_name: currentRegistrationStudent,
+              }),
+            });
+          }
+        } catch (error) {
+          console.error("Error cancelling registration:", error);
+        }
+
+        // Cleanup
+        isCapturingFaces = false;
+        currentRegistrationStudent = null;
+        capturedSamples = 0;
+
+        if (captureInterval) {
+          clearInterval(captureInterval);
+          captureInterval = null;
+        }
+
+        if (captureStream) {
+          captureStream.getTracks().forEach((track) => track.stop());
+          captureStream = null;
+        }
+
+        // Close modal
+        document.getElementById("faceCaptureModal").style.display = "none";
+
+        showNotification("Face capture registration cancelled", "warning");
+      }
+
+      function completeFaceCapture() {
+        // Just close the modal since registration is already complete
+        cancelFaceCapture();
+      }
+
+      // Student Management Functions
+      async function loadStudentsFromBackend() {
         try {
           const response = await fetch(`${BACKEND_URL}/api/students`);
           if (response.ok) {
             const data = await response.json();
             registeredStudents = data.students || [];
-            if (showAlert) {
-              if (registeredStudents.length === 0) {
-                alert(
-                  "No students registered yet. Please register students first."
-                );
-                return;
-              }
-              let studentList = "Registered Students:\n\n";
-              registeredStudents.forEach((student, index) => {
-                studentList += `${index + 1}. ${student.name}`;
-                if (student.id) studentList += ` (ID: ${student.id})`;
-                studentList += `\n   Registered: ${new Date(
-                  student.registered_at || student.registeredAt
-                ).toLocaleDateString()}`;
-                studentList += `\n   Samples: ${
-                  student.samples_count || student.samples
-                }\n\n`;
-              });
-              alert(studentList);
-            }
             updateAttendanceUI();
+            populateStudentFilters();
+            saveStoredData();
           }
         } catch (error) {
-          console.error("Error fetching students from backend:", error);
+          console.error("Error loading students:", error);
         }
       }
 
-      function exportToCSV() {
-        if (attendanceData.length === 0) {
-          alert("No attendance data to export");
+      function viewStudents() {
+        if (registeredStudents.length === 0) {
+          showNotification(
+            "No students registered yet. Please register students first.",
+            "warning"
+          );
           return;
         }
 
-        const csvContent = generateCSV();
-        const blob = new Blob([csvContent], {
-          type: "text/csv;charset=utf-8;",
+        let studentList = "Registered Students:\n\n";
+        registeredStudents.forEach((student, index) => {
+          studentList += `${index + 1}. ${student.name} (ID: ${student.id})\n`;
         });
-        const link = document.createElement("a");
 
-        if (link.download !== undefined) {
-          const url = URL.createObjectURL(blob);
-          link.setAttribute("href", url);
-          link.setAttribute(
-            "download",
-            `FaceTrack_Attendance_${new Date().toISOString().split("T")[0]}.csv`
-          );
-          link.style.visibility = "hidden";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-
-          showNotification("📁 Attendance data exported successfully!");
-        }
+        alert(studentList);
       }
 
-      function generateCSV() {
-        let csv = "Student Name,Date,Time,Timestamp\n";
+      function viewRecords() {
+        document.getElementById("recordsModal").style.display = "block";
+        document.getElementById("recordsContent").innerHTML =
+          createRecordsTable();
+      }
+
+      function closeRecordsModal() {
+        document.getElementById("recordsModal").style.display = "none";
+      }
+
+      function createRecordsTable() {
+        if (attendanceData.length === 0) {
+          return `
+            <div class="empty-state">
+              <div class="empty-state-icon">📋</div>
+              <div>No attendance records yet</div>
+              <div style="font-size: 12px; margin-top: 8px;">
+                Start the camera to begin tracking attendance
+              </div>
+            </div>
+          `;
+        }
+
+        let html = `
+          <div style="max-height: 400px; overflow-y: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="background: var(--color-canvas-default); border-bottom: 1px solid var(--color-border-default);">
+                  <th style="padding: 12px; text-align: left; font-weight: 600;">Student</th>
+                  <th style="padding: 12px; text-align: left; font-weight: 600;">Date</th>
+                  <th style="padding: 12px; text-align: left; font-weight: 600;">Time</th>
+                  <th style="padding: 12px; text-align: left; font-weight: 600;">Method</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
 
         attendanceData.forEach((record) => {
-          csv += `"${record.name}","${record.date}","${
-            record.time
-          }","${new Date(record.timestamp).toISOString()}"\n`;
+          html += `
+            <tr style="border-bottom: 1px solid var(--color-border-muted);">
+              <td style="padding: 12px;">${record.name}</td>
+              <td style="padding: 12px; color: var(--color-fg-muted);">${formatDate(
+                record.date
+              )}</td>
+              <td style="padding: 12px; color: var(--color-fg-muted);">${
+                record.time
+              }</td>
+              <td style="padding: 12px; color: var(--color-fg-muted);">
+                ${
+                  record.marked_by === "face_recognition"
+                    ? "🤖 AI Recognition"
+                    : "✋ Manual Entry"
+                }
+              </td>
+            </tr>
+          `;
         });
 
-        return csv;
+        html += "</tbody></table></div>";
+        return html;
       }
 
-      function showNotification(message) {
-        // Create notification element
-        const notification = document.createElement("div");
-        notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: var(--color-success-emphasis);
-                color: white;
-                padding: 12px 20px;
-                border-radius: 6px;
-                font-weight: 500;
-                z-index: 1001;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                animation: slideIn 0.3s ease-out;
-            `;
-        notification.textContent = message;
+      // Dashboard Functions
+      async function loadDashboardData() {
+        await Promise.all([loadAttendanceData(), loadStudentsFromBackend()]);
 
-        // Add animation keyframes
-        if (!document.querySelector("#notification-styles")) {
-          const style = document.createElement("style");
-          style.id = "notification-styles";
-          style.textContent = `
-                    @keyframes slideIn {
-                        from { transform: translateX(100%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
-                    }
-                    @keyframes slideOut {
-                        from { transform: translateX(0); opacity: 1; }
-                        to { transform: translateX(100%); opacity: 0; }
-                    }
-                `;
-          document.head.appendChild(style);
+        updateDashboardStats();
+        populateStudentFilters();
+        filterAttendance();
+      }
+
+      async function loadAttendanceData() {
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/attendance`);
+          const data = await response.json();
+
+          if (response.ok) {
+            attendanceData = data.attendance || [];
+            console.log(`Loaded ${attendanceData.length} attendance records`);
+          } else {
+            showNotification(
+              "Error loading attendance data: " + data.error,
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("Error loading attendance data:", error);
+          showNotification("Failed to connect to backend server", "error");
+        }
+      }
+
+      function updateDashboardStats() {
+        const today = new Date().toISOString().split("T")[0];
+        const todayAttendance = attendanceData.filter(
+          (record) => record.date === today
+        );
+
+        todayPresent.textContent = todayAttendance.length;
+        totalRegistered.textContent = registeredStudents.length;
+        totalRecords.textContent = attendanceData.length;
+
+        const rate =
+          registeredStudents.length > 0
+            ? Math.round(
+                (todayAttendance.length / registeredStudents.length) * 100
+              )
+            : 0;
+        attendanceRate.textContent = rate + "%";
+      }
+
+      function populateStudentFilters() {
+        // Populate student filter dropdown
+        studentFilter.innerHTML = '<option value="">All Students</option>';
+        document.getElementById("manualStudentSelect").innerHTML =
+          '<option value="">Choose a student...</option>';
+
+        const sortedStudents = [...registeredStudents].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+
+        sortedStudents.forEach((student) => {
+          const option1 = document.createElement("option");
+          option1.value = student.name;
+          option1.textContent = student.name;
+          studentFilter.appendChild(option1);
+
+          const option2 = document.createElement("option");
+          option2.value = student.name;
+          option2.textContent = student.name;
+          document.getElementById("manualStudentSelect").appendChild(option2);
+        });
+      }
+
+      function filterAttendance() {
+        const selectedDate = dateFilter.value;
+        const selectedStudent = studentFilter.value;
+
+        let filteredData = attendanceData.filter((record) => {
+          const dateMatch = !selectedDate || record.date === selectedDate;
+          const studentMatch =
+            !selectedStudent || record.name === selectedStudent;
+          return dateMatch && studentMatch;
+        });
+
+        renderAttendanceTable(filteredData);
+        updateRecordCount(filteredData.length);
+      }
+
+      function renderAttendanceTable(data) {
+        if (data.length === 0) {
+          attendanceTableBody.innerHTML = `
+            <tr>
+              <td colspan="5" class="empty-state">
+                <div class="empty-state-icon">📋</div>
+                <div>No attendance records found</div>
+                <div style="font-size: 12px; margin-top: 4px;">Try adjusting your filters</div>
+              </td>
+            </tr>
+          `;
+          return;
         }
 
-        document.body.appendChild(notification);
+        // Sort by date and time (newest first)
+        const sortedData = [...data].sort((a, b) => {
+          const dateA = new Date(a.timestamp || `${a.date} ${a.time}`);
+          const dateB = new Date(b.timestamp || `${b.date} ${b.time}`);
+          return dateB - dateA;
+        });
 
-        // Remove after 3 seconds
-        setTimeout(() => {
-          notification.style.animation = "slideOut 0.3s ease-in";
-          setTimeout(() => {
-            if (notification.parentNode) {
-              notification.parentNode.removeChild(notification);
-            }
-          }, 300);
-        }, 3000);
+        attendanceTableBody.innerHTML = sortedData
+          .map(
+            (record) => `
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">${getInitials(record.name)}</div>
+                <div>
+                  <div style="font-weight: 500;">${record.name}</div>
+                  <div style="font-size: 12px; color: var(--color-text-muted);">
+                    ${getStudentId(record.name)}
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>${formatDate(record.date)}</td>
+            <td>${record.time}</td>
+            <td>
+              <span class="status-badge status-present">Present</span>
+            </td>
+            <td>${
+              record.marked_by === "face_recognition"
+                ? "🤖 AI Recognition"
+                : "✋ Manual Entry"
+            }</td>
+          </tr>
+        `
+          )
+          .join("");
       }
 
-      function saveToStorage() {
-        localStorage.setItem("attendanceData", JSON.stringify(attendanceData));
-        localStorage.setItem(
-          "registeredStudents",
-          JSON.stringify(registeredStudents)
+      function updateRecordCount(count) {
+        recordCount.textContent = `${count} records`;
+      }
+
+      // Manual Attendance Functions
+      function markManualAttendance() {
+        if (registeredStudents.length === 0) {
+          showNotification(
+            "No students registered yet. Please register students first.",
+            "warning"
+          );
+          return;
+        }
+        document.getElementById("manualAttendanceModal").style.display =
+          "block";
+      }
+
+      function closeManualAttendanceModal() {
+        document.getElementById("manualAttendanceModal").style.display = "none";
+        document.getElementById("manualAttendanceForm").reset();
+      }
+
+      async function submitManualAttendance(event) {
+        event.preventDefault();
+
+        const studentName = document.getElementById(
+          "manualStudentSelect"
+        ).value;
+
+        if (!studentName) {
+          showNotification("Please select a student", "error");
+          return;
+        }
+
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/attendance`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: studentName,
+              marked_by: "manual_entry",
+            }),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            if (!result.already_present) {
+              showNotification(
+                `✅ ${studentName} marked present manually`,
+                "success"
+              );
+
+              // Add to local attendance data
+              const now = new Date();
+              const attendanceRecord = {
+                name: studentName,
+                date: now.toISOString().split("T")[0],
+                time: now.toLocaleTimeString("en-US", {
+                  hour12: false,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                }),
+                timestamp: now.toISOString(),
+                marked_by: "manual_entry",
+              };
+
+              attendanceData.unshift(attendanceRecord);
+              updateAttendanceUI();
+              saveStoredData();
+            } else {
+              showNotification(
+                `${studentName} is already marked present today`,
+                "warning"
+              );
+            }
+
+            closeManualAttendanceModal();
+
+            if (currentTab === "dashboard") {
+              updateDashboardStats();
+              filterAttendance();
+            }
+          } else {
+            showNotification(
+              result.message || "Error marking attendance",
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("Manual attendance error:", error);
+          showNotification("Failed to mark attendance", "error");
+        }
+      }
+
+      // Dashboard Action Functions
+      async function refreshDashboard() {
+        showNotification("Refreshing dashboard data...", "info");
+        await loadDashboardData();
+        showNotification("Dashboard data refreshed successfully", "success");
+      }
+
+      async function exportAttendance() {
+        if (attendanceData.length === 0) {
+          showNotification("No attendance data to export", "warning");
+          return;
+        }
+
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/export`);
+
+          if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `attendance_${
+              new Date().toISOString().split("T")[0]
+            }.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            showNotification(
+              "Attendance data exported successfully",
+              "success"
+            );
+          } else {
+            // Fallback: create CSV from local data
+            exportLocalAttendanceData();
+          }
+        } catch (error) {
+          console.error("Export error:", error);
+          exportLocalAttendanceData();
+        }
+      }
+
+      function exportLocalAttendanceData() {
+        const headers = ["Name", "Date", "Time", "Method"];
+        const csvContent = [
+          headers.join(","),
+          ...attendanceData.map((record) =>
+            [
+              `"${record.name}"`,
+              `"${record.date}"`,
+              `"${record.time}"`,
+              `"${
+                record.marked_by === "face_recognition"
+                  ? "AI Recognition"
+                  : "Manual Entry"
+              }"`,
+            ].join(",")
+          ),
+        ].join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `attendance_${new Date().toISOString().split("T")[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        showNotification("Attendance data exported successfully", "success");
+      }
+
+      function viewTodayAbsent() {
+        const today = new Date().toISOString().split("T")[0];
+        const todayAttendance = attendanceData.filter(
+          (record) => record.date === today
         );
+        const presentStudents = new Set(
+          todayAttendance.map((record) => record.name)
+        );
+
+        const absentStudents = registeredStudents.filter(
+          (student) => !presentStudents.has(student.name)
+        );
+
+        if (absentStudents.length === 0) {
+          showNotification("🎉 All students are present today!", "success");
+          return;
+        }
+
+        const absentList = absentStudents
+          .map((student) => `• ${student.name} (ID: ${student.id})`)
+          .join("\n");
+        alert(
+          `👻 Absent Students Today (${absentStudents.length}):\n\n${absentList}`
+        );
+      }
+
+      function generateReport() {
+        if (attendanceData.length === 0) {
+          showNotification("No attendance data to generate report", "warning");
+          return;
+        }
+
+        const today = new Date();
+        const todayStr = today.toISOString().split("T")[0];
+        const todayAttendance = attendanceData.filter(
+          (record) => record.date === todayStr
+        );
+
+        const reportContent = `
+FaceTrack Pro - Attendance Report
+Generated: ${today.toLocaleString()}
+
+=== SUMMARY STATISTICS ===
+Total Registered Students: ${registeredStudents.length}
+Total Attendance Records: ${attendanceData.length}
+
+=== TODAY'S ATTENDANCE (${formatDate(todayStr)}) ===
+Present: ${todayAttendance.length}
+Absent: ${registeredStudents.length - todayAttendance.length}
+Rate: ${
+          registeredStudents.length > 0
+            ? Math.round(
+                (todayAttendance.length / registeredStudents.length) * 100
+              )
+            : 0
+        }%
+
+=== STUDENT BREAKDOWN ===
+${registeredStudents
+  .map((student) => {
+    const studentRecords = attendanceData.filter(
+      (r) => r.name === student.name
+    );
+    return `${student.name}: ${studentRecords.length} total records`;
+  })
+  .join("\n")}
+        `;
+
+        // Download as text file
+        const blob = new Blob([reportContent], { type: "text/plain" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `FaceTrack_Report_${todayStr}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        showNotification(
+          "Attendance report generated and downloaded",
+          "success"
+        );
+      }
+
+      function clearTodayAttendance() {
+        const today = new Date().toISOString().split("T")[0];
+        const todayRecords = attendanceData.filter(
+          (record) => record.date === today
+        );
+
+        if (todayRecords.length === 0) {
+          showNotification(
+            "No attendance records for today to clear",
+            "warning"
+          );
+          return;
+        }
+
+        if (
+          !confirm(
+            `Are you sure you want to clear ${todayRecords.length} attendance records for today?\n\nThis action cannot be undone.`
+          )
+        ) {
+          return;
+        }
+
+        // Remove today's records from local data
+        attendanceData = attendanceData.filter(
+          (record) => record.date !== today
+        );
+
+        updateAttendanceUI();
+        updateDashboardStats();
+        filterAttendance();
+        saveStoredData();
+
+        showNotification(
+          `Cleared ${todayRecords.length} records for today`,
+          "success"
+        );
+      }
+
+      // System Status Functions
+      async function checkSystemStatus() {
+        try {
+          const response = await fetch(`${BACKEND_URL}/api/system/status`);
+          const data = await response.json();
+
+          if (response.ok) {
+            document.getElementById("systemStatus").textContent =
+              "🟢 System Online";
+            document.getElementById("modelStatus").textContent = `Model: ${
+              data.models_loaded ? "✅ Loaded" : "❌ Not trained"
+            }`;
+            document.getElementById(
+              "studentsStatus"
+            ).textContent = `Students: ${data.registered_students}`;
+            document.getElementById("recordsStatus").textContent = `Records: ${
+              data.total_records || 0
+            }`;
+
+            if (data.registered_students === 0) {
+              showNotification(
+                "No students registered yet. Start by registering your first student!",
+                "warning"
+              );
+            }
+          } else {
+            document.getElementById("systemStatus").textContent =
+              "❌ System Error";
+            showNotification(
+              "Cannot connect to backend server. Please ensure it is running.",
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("Error checking system status:", error);
+          document.getElementById("systemStatus").textContent =
+            "❌ Connection Error";
+          showNotification(
+            "Backend server unavailable. Please start the server.",
+            "error"
+          );
+        }
+      }
+
+      // UI Update Functions
+      function updateAttendanceUI() {
+        const today = new Date().toISOString().split("T")[0];
+        const todayAttendance = attendanceData.filter(
+          (record) => record.date === today
+        );
+
+        // Update stats
+        presentCount.textContent = todayAttendance.length;
+        totalStudents.textContent = registeredStudents.length;
+
+        // Update attendance list
+        if (todayAttendance.length === 0) {
+          attendanceList.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📋</div>
+              <div>No attendance records yet</div>
+              <div style="font-size: 12px; margin-top: 8px">
+                Start the camera to begin tracking
+              </div>
+            </div>
+          `;
+        } else {
+          // Sort by time (newest first)
+          const sortedAttendance = [...todayAttendance].sort((a, b) => {
+            const timeA = new Date(`${a.date} ${a.time}`);
+            const timeB = new Date(`${b.date} ${b.time}`);
+            return timeB - timeA;
+          });
+
+          attendanceList.innerHTML = sortedAttendance
+            .map(
+              (record) => `
+            <div class="attendance-item">
+              <div class="attendance-avatar">${getInitials(record.name)}</div>
+              <div class="attendance-details">
+                <h4>${record.name}</h4>
+                <p>${record.time} - ${
+                record.marked_by === "face_recognition" ? "🤖 AI" : "✋ Manual"
+              }</p>
+              </div>
+            </div>
+          `
+            )
+            .join("");
+        }
+      }
+
+      // Utility Functions
+      function getInitials(name) {
+        return name
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .toUpperCase()
+          .slice(0, 2);
+      }
+
+      function getStudentId(name) {
+        const student = registeredStudents.find((s) => s.name === name);
+        return student ? student.id : "N/A";
+      }
+
+      function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString("en-US", {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+        });
+      }
+
+      function formatTimeAgo(timestamp) {
+        const date = new Date(timestamp);
+        const now = new Date();
+        const diff = now - date;
+
+        const minutes = Math.floor(diff / 60000);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+
+        if (days > 0) return `${days}d ago`;
+        if (hours > 0) return `${hours}h ago`;
+        if (minutes > 0) return `${minutes}m ago`;
+        return "Just now";
+      }
+
+      // Data Persistence Functions
+      function saveStoredData() {
+        try {
+          localStorage.setItem(
+            "facetrack_attendance",
+            JSON.stringify(attendanceData)
+          );
+          localStorage.setItem(
+            "facetrack_students",
+            JSON.stringify(registeredStudents)
+          );
+        } catch (error) {
+          console.error("Error saving data to localStorage:", error);
+        }
       }
 
       function loadStoredData() {
         try {
-          const storedAttendance = localStorage.getItem("attendanceData");
-          const storedStudents = localStorage.getItem("registeredStudents");
+          const storedAttendance = localStorage.getItem("facetrack_attendance");
+          const storedStudents = localStorage.getItem("facetrack_students");
 
           if (storedAttendance) {
             attendanceData = JSON.parse(storedAttendance);
@@ -1520,37 +2649,234 @@
         }
       }
 
-      // Close modals when clicking outside
-      window.addEventListener("click", function (event) {
-        const registrationModal = document.getElementById("registrationModal");
-        const recordsModal = document.getElementById("recordsModal");
+      // Notification System
+      function showNotification(message, type = "info") {
+        // Remove existing notifications
+        const existing = document.querySelectorAll(".notification");
+        existing.forEach((n) => n.remove());
 
-        if (event.target === registrationModal) {
-          closeRegistrationModal();
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+          <div style="display: flex; align-items: start; gap: 12px;">
+            <div style="font-size: 20px;">
+              ${
+                type === "success"
+                  ? "✅"
+                  : type === "error"
+                  ? "❌"
+                  : type === "warning"
+                  ? "⚠️"
+                  : "ℹ️"
+              }
+            </div>
+            <div style="flex: 1;">
+              <div style="font-weight: 500; margin-bottom: 4px;">
+                ${
+                  type === "success"
+                    ? "Success"
+                    : type === "error"
+                    ? "Error"
+                    : type === "warning"
+                    ? "Warning"
+                    : "Info"
+                }
+              </div>
+              <div style="font-size: 14px; white-space: pre-line;">
+                ${message}
+              </div>
+            </div>
+            <button onclick="this.closest('.notification').remove()" 
+                    style="background: none; border: none; color: var(--color-text-muted); cursor: pointer; font-size: 18px;">&times;</button>
+          </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Show notification
+        setTimeout(() => notification.classList.add("show"), 10);
+
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+          notification.classList.remove("show");
+          setTimeout(() => notification.remove(), 300);
+        }, 5000);
+      }
+
+      // Auto-refresh data every 30 seconds when dashboard is active
+      setInterval(() => {
+        if (currentTab === "dashboard") {
+          loadAttendanceData().then(() => {
+            updateDashboardStats();
+            filterAttendance();
+          });
+        }
+      }, 30000);
+
+      // Periodic system status check
+      setInterval(checkSystemStatus, 60000); // Check every minute
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", function (e) {
+        if (e.ctrlKey || e.metaKey) {
+          switch (e.key) {
+            case "s":
+              e.preventDefault();
+              if (currentTab === "registration") {
+                openRegistrationModal();
+              }
+              break;
+            case "c":
+              e.preventDefault();
+              if (stream) {
+                stopCamera();
+              } else {
+                startCamera();
+              }
+              break;
+            case "r":
+              e.preventDefault();
+              if (currentTab === "dashboard") {
+                refreshDashboard();
+              }
+              break;
+            case "e":
+              e.preventDefault();
+              if (currentTab === "dashboard") {
+                exportAttendance();
+              }
+              break;
+            case "m":
+              e.preventDefault();
+              markManualAttendance();
+              break;
+          }
         }
 
-        if (event.target === recordsModal) {
-          closeRecordsModal();
+        // Switch tabs with number keys
+        if (e.key === "1") {
+          switchTab("registration");
+          document
+            .querySelector("[onclick=\"switchTab('registration')\"]")
+            .click();
+        } else if (e.key === "2") {
+          switchTab("dashboard");
+          document
+            .querySelector("[onclick=\"switchTab('dashboard')\"]")
+            .click();
+        }
+
+        // Close modals with Escape
+        if (e.key === "Escape") {
+          document.querySelectorAll(".modal").forEach((modal) => {
+            modal.style.display = "none";
+          });
         }
       });
 
-      // Handle page visibility changes
-      document.addEventListener("visibilitychange", function () {
-        if (document.hidden && isRecording) {
-          console.log("Page hidden, pausing recognition");
-          stopRecognition();
-        } else if (!document.hidden && isRecording) {
-          console.log("Page visible, resuming recognition");
-          startRecognition();
-        }
-      });
+      // Auto-save form data
+      document
+        .getElementById("studentName")
+        .addEventListener("input", function () {
+          localStorage.setItem("draft_student_name", this.value);
+        });
 
-      // Cleanup on page unload
-      window.addEventListener("beforeunload", function () {
-        if (stream) {
-          stream.getTracks().forEach((track) => track.stop());
+      document
+        .getElementById("studentId")
+        .addEventListener("input", function () {
+          localStorage.setItem("draft_student_id", this.value);
+        });
+
+      // Load draft data
+      const draftName = localStorage.getItem("draft_student_name");
+      const draftId = localStorage.getItem("draft_student_id");
+      if (draftName) document.getElementById("studentName").value = draftName;
+      if (draftId) document.getElementById("studentId").value = draftId;
+
+      // Clear drafts when form is submitted
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function () {
+          localStorage.removeItem("draft_student_name");
+          localStorage.removeItem("draft_student_id");
+        });
+
+      // Performance monitoring
+      let performanceMetrics = {
+        recognitionCount: 0,
+        recognitionTime: [],
+        lastRecognition: null,
+      };
+
+      // Track recognition performance
+      function trackRecognitionPerformance(startTime) {
+        const endTime = Date.now();
+        const duration = endTime - startTime;
+
+        performanceMetrics.recognitionCount++;
+        performanceMetrics.recognitionTime.push(duration);
+        performanceMetrics.lastRecognition = endTime;
+
+        // Keep only last 100 measurements
+        if (performanceMetrics.recognitionTime.length > 100) {
+          performanceMetrics.recognitionTime.shift();
         }
-      });
+
+        // Log performance occasionally
+        if (performanceMetrics.recognitionCount % 20 === 0) {
+          const avgTime =
+            performanceMetrics.recognitionTime.reduce((a, b) => a + b, 0) /
+            performanceMetrics.recognitionTime.length;
+          console.log(
+            `Recognition performance: ${avgTime.toFixed(0)}ms average over ${
+              performanceMetrics.recognitionTime.length
+            } samples`
+          );
+        }
+      }
+
+      // Initialize tooltips and help system
+      function initializeHelpSystem() {
+        // Add title attributes for basic tooltips
+        document.getElementById("startCamera").title =
+          "Start camera for face recognition (Ctrl+C)";
+        document.getElementById("stopCamera").title =
+          "Stop camera and recognition (Ctrl+C)";
+        document.querySelector('[onclick="openRegistrationModal()"]').title =
+          "Register new student (Ctrl+S)";
+        document.querySelector('[onclick="viewStudents()"]').title =
+          "View all registered students";
+        document.querySelector('[onclick="viewRecords()"]').title =
+          "View attendance records";
+
+        // Dashboard tooltips
+        if (document.getElementById("dateFilter")) {
+          document.getElementById("dateFilter").title =
+            "Filter records by date";
+          document.getElementById("studentFilter").title =
+            "Filter records by student";
+        }
+      }
+
+      // Call help system initialization
+      setTimeout(initializeHelpSystem, 1000);
+
+      // Add version info
+      console.log("🎯 FaceTrack Pro - Enhanced Interface v2.0");
+      console.log("Features: Registration, Recognition, Dashboard, Analytics");
+      console.log(
+        "Keyboard shortcuts: 1/2 (tabs), Ctrl+C (camera), Ctrl+S (register), Ctrl+M (manual), Ctrl+R (refresh), Ctrl+E (export)"
+      );
+
+      // Welcome message
+      setTimeout(() => {
+        if (registeredStudents.length === 0) {
+          showNotification(
+            "Welcome to FaceTrack Pro! Start by registering your first student using the '➕ Register Student' button.",
+            "info"
+          );
+        }
+      }, 2000);
     </script>
   </body>
 </html>
