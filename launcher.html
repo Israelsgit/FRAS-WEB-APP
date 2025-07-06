@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceTrack Pro Launcher</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #161b22;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #2ea043;
+        }
+        .status {
+            padding: 20px;
+            background: #21262d;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FaceTrack Pro</h1>
+        <p>AI-Powered Facial Recognition Attendance System</p>
+        
+        <div class="status">
+            <h3>Quick Start</h3>
+            <p>1. Make sure the backend server is running</p>
+            <p>2. Click the button below to open the web application</p>
+        </div>
+        
+        <a href="index.html" class="btn">Launch Web App</a>
+        <a href="http://localhost:5000" class="btn">Backend Status</a>
+        
+        <div class="status">
+            <h3>Instructions</h3>
+            <p>• Run start_backend.bat (Windows) or ./start_backend.sh (Unix/Linux)</p>
+            <p>• Open this HTML file in your browser</p>
+            <p>• Register students and start tracking attendance</p>
+        </div>
+    </div>
+</body>
+</html>

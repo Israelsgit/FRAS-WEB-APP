@@ -1,0 +1,36 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask & general
+instance/
+.env
+*.sqlite3
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node.js (if used for frontend tooling)
+node_modules/
+
+# Data/model files
+*.npz
+*.pkl
+*.h5
+*.hdf5
+*.csv
+*.json
+!attendance_data.json
+!student_registry.json
+
+# VSCode/IDE
+.vscode/
+.idea/
+
+# Misc
+*.swp 
